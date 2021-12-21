@@ -8,16 +8,13 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(
-    private angularFireAuth: AngularFireAuth,
-    private _router: Router
-  ) {}
+  constructor(private _authService: AuthService, private _router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -27,13 +24,12 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.angularFireAuth.authState.pipe(
-      map((user) => {
-        if (user) {
-          return true;
+    return this._authService.checkAuthentication().pipe(
+      map((isAuthenticated) => {
+        if (!isAuthenticated) {
+          this._router.navigateByUrl('/auth/login');
         }
-        this._router.navigateByUrl('/login');
-        return false;
+        return isAuthenticated;
       })
     );
   }

@@ -1,0 +1,60 @@
+<div class="login-wrapper">
+  <h1 class="login-title">Welcome to Your School</h1>
+  <h3 class="login-subtitle">Please Sign In!</h3>
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+    <mat-form-field appearance="standard">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" />
+      <mat-error *ngIf="checkFieldValidity('email')">{{
+        getFieldInvalidMessage("email")
+      }}</mat-error>
+      <button
+        *ngIf="loginForm.value.email"
+        tabindex="-1"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="onClearClick('email')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="checkFieldValidity('password')">{{
+        getFieldInvalidMessage("password")
+      }}</mat-error>
+      <button
+        *ngIf="loginForm.value.password"
+        tabindex="-1"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="onClearClick('password')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button
+      *ngIf="!isSubmitLoading"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!loginForm.valid"
+    >
+      Sign In
+    </button>
+    <mat-spinner
+      *ngIf="isSubmitLoading"
+      diameter="20"
+      style="align-self: center"
+    ></mat-spinner>
+    <a class="link" href="" (click)="onForgotPasswordClick($event)"
+      >Forgot Password</a
+    >
+    <a class="link" href="" (click)="onSignUpClick($event)"
+      >Create a new account</a
+    >
+  </form>
+</div>
