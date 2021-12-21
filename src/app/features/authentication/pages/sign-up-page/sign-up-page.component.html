@@ -12,7 +12,7 @@
       <mat-error *ngIf="checkFieldValidity('fullName')">{{
         getFieldInvalidMessage("fullName")
       }}</mat-error>
-      <button
+      <a
         *ngIf="signUpForm.value.fullName"
         tabindex="-1"
         matSuffix
@@ -21,7 +21,7 @@
         (click)="onClearClick('fullName')"
       >
         <mat-icon>close</mat-icon>
-      </button>
+      </a>
     </mat-form-field>
 
     <mat-form-field appearance="standard">
@@ -30,7 +30,7 @@
       <mat-error *ngIf="checkFieldValidity('email')">{{
         getFieldInvalidMessage("email")
       }}</mat-error>
-      <button
+      <a
         *ngIf="signUpForm.value.email"
         tabindex="-1"
         matSuffix
@@ -39,7 +39,7 @@
         (click)="onClearClick('email')"
       >
         <mat-icon>close</mat-icon>
-      </button>
+      </a>
     </mat-form-field>
 
     <mat-form-field appearance="standard">
@@ -48,7 +48,7 @@
       <mat-error *ngIf="checkFieldValidity('password')">{{
         getFieldInvalidMessage("password")
       }}</mat-error>
-      <button
+      <a
         *ngIf="signUpForm.value.password"
         tabindex="-1"
         matSuffix
@@ -57,7 +57,7 @@
         (click)="onClearClick('password')"
       >
         <mat-icon>close</mat-icon>
-      </button>
+      </a>
     </mat-form-field>
 
     <mat-form-field appearance="standard">
@@ -66,7 +66,7 @@
       <mat-error *ngIf="checkFieldValidity('retypePassword')">{{
         getFieldInvalidMessage("retypePassword")
       }}</mat-error>
-      <button
+      <a
         *ngIf="signUpForm.value.retypePassword"
         tabindex="-1"
         matSuffix
@@ -75,7 +75,7 @@
         (click)="onClearClick('retypePassword')"
       >
         <mat-icon>close</mat-icon>
-      </button>
+      </a>
     </mat-form-field>
     <button
       *ngIf="!isSubmitLoading"

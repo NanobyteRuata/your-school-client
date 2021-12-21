@@ -72,15 +72,6 @@ export class LoginPageComponent implements OnInit {
     return '';
   }
 
-  @HostListener('keydown', ['$event'])
-  onKeyDown = (event: KeyboardEvent) => {
-    console.log(event);
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      this.onLoginSubmit();
-    }
-  };
-
   onLoginSubmit() {
     if (this.loginForm.valid) {
       this.isSubmitLoading = true;

@@ -9,7 +9,12 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 import { AuthenticationComponent } from './authentication.component';
 
 @NgModule({
-  declarations: [LoginPageComponent, ForgotPasswordPageComponent, SignUpPageComponent, AuthenticationComponent],
+  declarations: [
+    LoginPageComponent,
+    ForgotPasswordPageComponent,
+    SignUpPageComponent,
+    AuthenticationComponent,
+  ],
   imports: [AuthenticationRoutingModule, SharedModule, CommonModule],
   providers: [AuthenticationApiService],
 })

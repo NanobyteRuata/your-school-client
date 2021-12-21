@@ -44,4 +44,62 @@ export class AuthenticationApiService {
       };
     }
   };
+
+  forgotPassword = async (email: string): Promise<ResponseModel> => {
+    try {
+      const response = await this._angularFireAuth.sendPasswordResetEmail(
+        email
+      );
+      return {
+        success: true,
+        data: response,
+        message: `Email sent to ${email}`,
+      };
+    } catch (err: any) {
+      return {
+        success: false,
+        message: err.message || 'Sending reset email failed',
+      };
+    }
+  };
+
+  verifyCode = async (code: string): Promise<ResponseModel> => {
+    try {
+      const response = await this._angularFireAuth.verifyPasswordResetCode(
+        code
+      );
+      return {
+        success: true,
+        data: response,
+        message: `Code is valid`,
+      };
+    } catch (err: any) {
+      return {
+        success: false,
+        message: err.message || 'Invalid code',
+      };
+    }
+  };
+
+  resetPassword = async (
+    code: string,
+    newPassword: string
+  ): Promise<ResponseModel> => {
+    try {
+      const response = await this._angularFireAuth.confirmPasswordReset(
+        code,
+        newPassword
+      );
+      return {
+        success: true,
+        data: response,
+        message: `Password reset success`,
+      };
+    } catch (err: any) {
+      return {
+        success: false,
+        message: err.message || 'Password reset failed',
+      };
+    }
+  };
 }

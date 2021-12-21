@@ -10,6 +10,7 @@ const routes: Routes = [
     path: '',
     component: AuthenticationComponent,
     children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: 'login', component: LoginPageComponent },
       { path: 'forgot-password', component: ForgotPasswordPageComponent },
       { path: 'sign-up', component: SignUpPageComponent },
